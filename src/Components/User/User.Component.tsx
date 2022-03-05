@@ -8,22 +8,16 @@ import {
     CardDetailsImageContainer,
     CardDetailsParagraphContainer,
     CardDetailsSpanContainer
-} from './Card.Styled';
-import { Link } from 'react-router-dom';
+} from '../Card/Card.Styled';
+import { useLocation } from 'react-router-dom';
 
-const Card = (props: any) =>
+const UserProfile = () =>
 {
-
+  const { props } = useLocation().state;
     return (
-
-      <CardContainer >
+      <CardContainer>
             <CardDetailsContainer>
-         <Link to={`/user/${props.item.login.uuid}`}
-
-        state={{
-          props: props,
-        }}>
-  <CardDetailsImageContainer src={props.item.picture.large} alt='' />
+                <CardDetailsImageContainer src={props.item.picture.large} alt='' />
                 <CardDetailsParagraphContainer className='name'>
                     <FaUserCircle className='soc-icon' />{' '}
                     <CardDetailsSpanContainer className='name'>
@@ -60,11 +54,9 @@ const Card = (props: any) =>
                         { FormatPhone(props.item.phone) }
                     </CardDetailsSpanContainer>
                 </CardDetailsParagraphContainer>
-</Link>
-
             </CardDetailsContainer>
         </CardContainer>
     );
 };
 
-export default Card;
+export default UserProfile;
